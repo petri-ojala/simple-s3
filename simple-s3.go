@@ -43,8 +43,6 @@ func main() {
 	s3Config := &aws.Config{
 		Credentials: creds,
 		Region:      aws.String(*awsRegion),
-		/*	DisableSSL:       aws.Bool(false,
-			S3ForcePathStyle: aws.Bool(true),*/
 	}
 
 	s3Session := session.New(s3Config)
