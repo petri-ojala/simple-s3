@@ -39,7 +39,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// Upload gzipped test result json to S3
+	// Connect to AWS S3
 	s3Config := &aws.Config{
 		Credentials: creds,
 		Region:      aws.String(*awsRegion),
@@ -49,6 +49,7 @@ func main() {
 
 	s3Session := session.New(s3Config)
 
+	// Upload file to S3
 	_, err = s3.New(s3Session).PutObject(&s3.PutObjectInput{
 		Bucket: aws.String(*s3Bucket),
 		Key:    aws.String(*s3Key),
